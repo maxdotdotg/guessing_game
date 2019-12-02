@@ -1,8 +1,23 @@
 // use the standard io lib
 use std::io;
 
+// use the rand library!
+// or also, the Rng trait?, which gives access to 
+// rng-related methods
+use rand::Rng;
+
 fn main() {
     println!("Guess the number!");
+
+    // create the secret_number variable
+    // we're using the thread_rng method?
+    // the rng "is local to the current thread of execution 
+    // and seeded by the operating system."
+    // and we're passing it a range, 1-101 exclusive
+    let secret_number = rand::thread_rng().gen_range(1,101);
+
+    println!("the secret number is {}", secret_number);
+
     println!("please input your guess.");
 
     // creat the guess variable
