@@ -6,6 +6,9 @@ use std::io;
 // rng-related methods
 use rand::Rng;
 
+// use the ordering comparison trait/type/method?
+use std::cmp::Ordering;
+
 fn main() {
     println!("Guess the number!");
 
@@ -42,6 +45,25 @@ fn main() {
     io::stdin().read_line(&mut guess)
         .expect("Failed to read line");
 
+    // define guess again!
+    // possible because it shadows?
+    // allows access to the value without changing the source?
+    // and cast/trim the string into an u32 int
+    //
+    // parse is used for number conversions
+    // because of that, declare the type for guess
+    let guess: u32 = guess.trim().parse()
+        .expect("Please provide a number");
+
     println!("you guessed: {}", guess);
+
+
+    // compare int guess to int secret_number
+    // match requires explicit handling of all options?
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
 
 }
