@@ -19,8 +19,6 @@ fn main() {
     // and we're passing it a range, 1-101 exclusive
     let secret_number = rand::thread_rng().gen_range(1,101);
 
-    println!("the secret number is {}", secret_number);
-
     // it's a loop! currently infinite!
     loop {
         println!("please input your guess.");
